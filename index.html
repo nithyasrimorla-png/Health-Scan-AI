@@ -93,34 +93,17 @@
 
     <!-- Result -->
     <div class="result">
-     <div class="result">
 
     {% if disease %}
 
         <h3>🧠 Disease: {{ disease }}</h3>
-        <p>📊 prediction: {{ prediction  }}%</p>
+        <p>📊 Prediction: {{ prediction }}%</p>
 
-        <button onclick="showInfo()">
-            Click for Food & Care Advice
-        </button>
+        <button onclick="showInfo()">Click for Food & Care Advice</button>
 
         <div id="details"></div>
 
-        <script>
-        function showInfo() {
-            document.getElementById("details").innerHTML = `
-                <div style="padding:10px;background:#e7ffe7;border-radius:10px;">
-                    <p><b>🍎 Food:</b> {{ food }}</p>
-                    <p><b>💡 Care:</b> {{ care }}</p>
-                </div>
-            `;
-        }
-        </script>
-
-    {% elif result %}
-        <div>{{ result }}</div>
     {% endif %}
-
 
     {% if emergency_level == "HIGH" %}
         <div style="background:red;color:white;padding:10px;border-radius:10px;margin-top:10px;">
@@ -140,9 +123,17 @@
 <div class="warning">
     ⚠️ This is not a medical diagnosis. Please consult a doctor.
 </div>
-        
 
 <script>
+function showInfo() {
+    document.getElementById("details").innerHTML = `
+        <div style="margin-top:10px;padding:10px;background:#e7ffe7;border-radius:10px;">
+            <p><b>🍎 Food:</b> {{ food }}</p>
+            <p><b>💡 Care:</b> {{ care }}</p>
+        </div>
+    `;
+}
+</script>
 function showInfo() {
     document.getElementById("details").innerHTML = `
         <div style="margin-top:10px; padding:10px; background:#e7ffe7; border-radius:10px;">
