@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Scan AI</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f6ff;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .warning {
+            margin-top: 10px;
+            color: red;
+            font-size: 12px;
+        }
+
+        #details {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Health Scan AI 🩺</h1>
+
+    <!--  MAIN FORM  -->
+    <form method="POST">
+        <input type="text" name="symptoms" id="mainInput" placeholder="Enter your symptoms..." required>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    <!--  Voice input -->
+    <div>
+        <input id="msg" placeholder="Type or speak symptoms..." />
+        <br>
+        <button onclick="startVoice()">🎤 Speak</button>
+        <button onclick="sendToForm()">Send</button>
+    </div>
+
+    <!-- RESULT  -->
+    {% if submitted %}
+    <div class="result">
+
+        {% if disease %}
+            <h3>🧠 Disease: {{ disease }}</h3>
+            <p>📊 Prediction: {{ prediction }}%</p>
+
+            <button onclick="showInfo()">
+                Click for Food & Care Advice
+            </button>
+
+            <div id="details"></div>
+        {% endif %}
+
+        <!-- Emergency -->
+        {% if emergency_level == "HIGH" %}
+            <div style="background:red;color:white;padding:10px;border-radius:10px;margin-top:10px;">
+                🚨 HIGH EMERGENCY DETECTED!<br>
+                Go to hospital immediately.
+            </div>
+
+        {% elif emergency_level == "MEDIUM" %}
+            <div style="background:orange;color:white;padding:10px;border-radius:10px;margin-top:10px;">
+                ⚠️ Moderate symptoms detected.<br>
+                Consult a doctor soon.
+            </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+    <div class="warning">
+        ⚠️ This is not a medical diagnosis. Please consult a doctor.
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+function showInfo() {
+    document.getElementById("details").innerHTML = `
+        <div style="padding:10px;background:#e7ffe7;border-radius:10px;">
+            <p><b>🍎 Food:</b> {{ food }}</p>
+            <p><b>💡 Care:</b> {{ care }}</p>
+        </div>
+    `;
+}
+
+//  Voice input
+function startVoice() {
+    let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        document.getElementById("msg").value =
+            event.results[0][0].transcript;
+    };
+}
+
+// Send voice text to Flask
+function sendToForm() {
+    let text = document.getElementById("msg").value;
+    if (!text) {
+        alert("Please speak or type symptoms first!");
+        return;
+    }
+
+    document.getElementById("mainInput").value = text;
+}
+</script>
+
+</body>
+</html>
