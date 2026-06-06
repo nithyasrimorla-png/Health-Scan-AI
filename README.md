@@ -1,89 +1,187 @@
-# Health-Scan-AI
-Health Scan AI is a web-based symptom checker built using Flask and machine learning. Users can enter symptoms to get predicted diseases, confidence scores, food advice, and care tips. It also detects emergency conditions and supports multilingual use, helping provide quick preliminary health insights.
-# 🩺 Health Scan AI
 
-Health Scan AI is a web-based intelligent healthcare support system built using Flask and Machine Learning. It allows users to enter symptoms and receive predicted diseases along with basic care advice, food recommendations, and emergency alerts.
+# 🩺 Health Scan AI – Symptom Checker (Flask + Machine Learning)
+
+An AI-powered **health symptom checker web application** built using **Flask, Machine Learning (Random Forest), and multilingual symptom support**.
+It predicts possible diseases based on user-entered symptoms and provides basic health advice.
 
 ---
 
 ## 🚀 Features
 
-- 🤖 AI-based disease prediction using Random Forest
-- 📝 Symptom input (text + voice)
-- 📊 Prediction percentage (confidence level)
-- 🍎 Food advice & 💡 care tips
-- 🚨 Emergency detection system (HIGH / MEDIUM alerts)
-- 🌐 Multi-language support (English & Tamil)
-- 💻 Simple and user-friendly interface
+* 🤖 AI-based disease prediction using Random Forest
+* 🌍 Multilingual symptom input support (Hindi, Kannada, Tamil, Telugu, etc.)
+* 🧠 Rule-based + ML hybrid prediction system
+* ⚠️ Emergency detection (HIGH / MEDIUM / LOW)
+* 🍎 Health advice (food + care suggestions)
+* 🏥 Covers 40+ diseases
+* 🔍 Smart symptom normalization system
+* 💡 Handles real-world messy user inputs
+
+---
+🛠️ Tech Stack
+
+This project is built using:
+
+Flask 🐍 – Backend web framework
+Scikit-learn 🤖 – Machine learning model (RandomForestClassifier)
+Pandas 📊 – Data handling and preprocessing
+HTML / CSS / JavaScript 🎨 – Frontend UI
+
+## 🧠 AI Model
+
+* Algorithm: **Random Forest Classifier**
+* Library: `scikit-learn`
+* Trained on: `data.csv`
+* Features used:
+
+  * fever
+  * cough
+  * headache
+  * vomiting
+  * dizziness
+  * chest pain
+  * fatigue
+  * and more symptom indicators
 
 ---
 
-## 🧠 How It Works
+## 🌐 Supported Languages
 
-1. User enters symptoms
-2. System processes input using ML model
-3. Predicts possible disease
-4. Displays:
-   - Disease name
-   - Prediction percentage
-   - Food advice
-   - Care tips
-   - Emergency warning (if needed)
+The system supports symptom input in:
 
----
+* English
+* Hindi (हिंदी)
+* Kannada (ಕನ್ನಡ)
+* Tamil (தமிழ்)
+* Telugu (తెలుగు)
 
-## 🛠️ Tech Stack
+Example:
 
-- Python 🐍
-- Flask 🌐
-- Pandas 📊
-- Scikit-learn 🤖
-- HTML, CSS, JavaScript 🎨
+headache = ತಲೆನೋವು = सिर दर्द = தலைவலி = తలనొప్పి
 
----
 
-## 📁 Project Structure
+## 🏥 Diseases Covered
+
+Some major diseases detected:
+
+* Flu
+* Viral Fever
+* COVID-19
+* Dengue
+* Malaria
+* Typhoid
+* Pneumonia
+* Asthma
+* Diabetes
+* Hypertension
+* Migraine
+* Tuberculosis
+* UTI
+* Kidney Infection
+* Arthritis
+* Osteoporosis
+* Allergy
+* Depression
+* Anxiety Disorders
+
+
+
+## ⚠️ Safety System
+
+* 🚨 Chest pain → HIGH emergency warning
+* ⚠️ Dizziness / vomiting → MEDIUM warning
+* ❗ Invalid or unsafe combinations are filtered
+* ❌ Prevents incorrect mapping (e.g., headache → osteoporosis)
+
+
+## 🏗️ Project Structure
+
+```
 health_scan_ai/
-│── app.py
-│── data.csv
-│── templates/
-│ └── index.html
+│
+├── app.py                 # Main Flask backend
+├── data.csv              # Training dataset
+├── templates/
+│     └── index.html      # Frontend UI
+├── static/               # CSS/JS (optional)
+└── README.md
 
+
+## ⚙️ Installation & Setup
+
+### 1. Clone project
+
+bash:
+git clone https://github.com/yourusername/health-scan-ai.git
+cd health-scan-ai
+
+
+### 2. Install dependencies
+
+```bash
+pip install flask pandas scikit-learn
+```
+
+### 3. Run the app
+
+```bash
+python app.py
+```
+
+### 4. Open browser
+
+```
+http://127.0.0.1:5000/
+```
+
+
+## 🧪 Sample Inputs
+
+Try these in your app:
+
+```
+fever, cough, fatigue
+chest pain
+vomiting, stomach pain
+headache, light sensitivity
+high fever, chills
+burning urination
+weak, dizziness
+```
 
 ---
 
-## ▶️ How to Run
+## 📊 Output Example
 
-1. Install dependencies:pip install flask pandas scikit-learn
-2. Run the app:python app.py
-3. Open in browser:http://127.0.0.1:5000/
+```
+🧠 Disease: Viral Fever
+📊 Confidence: 92%
+
+💡 Advice:
+- Rest well
+- Drink fluids
+- Take proper medication
+```
+
+---
+
+## 🔮 Future Improvements
+
+* 🎤 Voice-based symptom input
+* 🗣️ Voice AI responses
+* 💬 Chatbot UI (WhatsApp style)
+* 🌐 Fully multilingual AI doctor
+* 📱 Mobile app version
+* 🧾 Medical report generation
+
+---
 
 ## ⚠️ Disclaimer
 
-This project is for educational purposes only.  
-It does not provide medical diagnosis.  
-Always consult a qualified doctor for serious health issues.
+This application is for **educational purposes only**.
+It is **NOT a replacement for professional medical diagnosis or treatment**.
+
+Always consult a qualified doctor for medical concerns.
 
 ---
-
-## 🌟 Future Improvements
-
-- 📱 Mobile responsive UI
-- 🧾 Medicine suggestions
-- 👨‍⚕️ Doctor consultation integration
-- ☁️ Cloud deployment
-- 📊 Better dataset for higher accuracy
-
----
-
-## 👩‍💻 Author
-
-Nithya Sri Morla
-
----
-
-## ⭐ If you like this project, give it a star!
-
-
-
 
