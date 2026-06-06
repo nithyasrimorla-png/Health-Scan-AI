@@ -44,67 +44,225 @@ def emergency_check(symptoms):
 # ADVICE SYSTEM
 # -----------------------------
 def advice(disease):
-    info = {
-        "flu": { 
-            "food": "Warm soups, fruits, ginger tea, honey water.",
-            "care": "Rest, drink fluids, stay warm." }, 
-        "cold": {
-            "food": "Soup, warm milk, fruits, herbal tea.", 
-            "care": "Steam inhalation, rest." }, 
-        "covid": { 
-            "food": "Protein foods, fruits, fluids.",
-            "care": "Isolation, monitor oxygen, rest." }, 
-        "migraine": {
-            "food": "Light food, bananas, lots of water.", 
-            "care": "Rest in dark room, avoid noise." },
-        "gastritis": { 
-            "food": "Rice, curd, banana, soft foods.",
-            "care": "Avoid spicy/oily food." },
-        "dengue": { 
-            "food": "Papaya leaf juice, fruits, fluids.", 
-            "care": "Rest, medical monitoring needed." },
-        "food_poisoning": { 
-            "food": "ORS, rice porridge, toast, banana.", 
-            "care": "Hydration, rest, avoid outside food." }, 
-        "pneumonia": { 
-            "food": "Light soups, fluids.",
-            "care": "Immediate doctor consultation." },
-        "typhoid": { 
-            "food": "Boiled food, soups, soft diet.", 
-            "care": "Complete rest and medication." }, 
-        "throat_infection": { 
-            "food": "Warm water, honey, soups.", 
-            "care": "Salt water gargle." }, 
-        "heart_problem": {
-            "food": "Low salt diet, fruits, vegetables.",
-            "care": "Avoid stress, consult doctor immediately." }, 
-        "viral_fever": { 
-            "food": "Fruits, fluids, coconut water.", 
-            "care": "Rest and hydration." }, 
-        "malaria": { 
-            "food": "Fruits, coconut water, light meals.", 
-            "care": "Complete rest, avoid mosquito exposure." }, 
-        "anemia": { 
-            "food": "Spinach, dates, iron-rich foods.", 
-            "care": "Take iron supplements, proper diet." },
-        "sinusitis": { 
-            "food": "Warm fluids, soups.", 
-            "care": "Steam inhalation, avoid cold." },
-        "asthma": {
-            "food": "Healthy diet, avoid cold foods.", 
-            "care": "Avoid dust, use inhaler if needed." }, 
-        "diabetes": { 
-            "food": "Low sugar diet, vegetables.",
-            "care": "Monitor sugar, exercise regularly." }, 
-        "hypertension": { 
-            "food": "Low salt diet, fruits.",
-            "care": "Reduce stress, regular exercise." }
-    }
-    
+info = {
 
-    return info.get(disease, {
+    "flu": {
+        "food": "Warm soups, fruits, ginger tea.",
+        "care": "Rest and drink plenty of fluids."
+    },
+
+    "cold": {
+        "food": "Warm milk, soup, herbal tea.",
+        "care": "Steam inhalation and rest."
+    },
+
+    "covid": {
+        "food": "Protein-rich foods and fluids.",
+        "care": "Rest and monitor symptoms."
+    },
+
+    "viral_fever": {
+        "food": "Coconut water and fruits.",
+        "care": "Hydration and rest."
+    },
+
+    "dengue": {
+        "food": "ORS, fruits, papaya leaf juice.",
+        "care": "Medical monitoring recommended."
+    },
+
+    "malaria": {
+        "food": "Light meals and fluids.",
+        "care": "Complete medication course."
+    },
+
+    "typhoid": {
+        "food": "Soft boiled food and soups.",
+        "care": "Complete rest and medication."
+    },
+
+    "pneumonia": {
+        "food": "Warm soup and fluids.",
+        "care": "Doctor consultation needed."
+    },
+
+    "bronchitis": {
+        "food": "Honey tea and warm liquids.",
+        "care": "Avoid smoke and dust."
+    },
+
+    "asthma": {
+        "food": "Healthy balanced diet.",
+        "care": "Avoid allergens and dust."
+    },
+
+    "tuberculosis": {
+        "food": "High-protein nutritious foods.",
+        "care": "Seek medical treatment."
+    },
+
+    "migraine": {
+        "food": "Light food and water.",
+        "care": "Rest in a dark room."
+    },
+
+    "sinusitis": {
+        "food": "Warm fluids and soups.",
+        "care": "Steam inhalation."
+    },
+
+    "throat_infection": {
+        "food": "Warm water and honey.",
+        "care": "Salt-water gargles."
+    },
+
+    "ear_infection": {
+        "food": "Healthy food and fluids.",
+        "care": "Consult doctor if pain persists."
+    },
+
+    "conjunctivitis": {
+        "food": "Hydration and fruits.",
+        "care": "Keep eyes clean."
+    },
+
+    "gastritis": {
+        "food": "Rice, curd and banana.",
+        "care": "Avoid spicy foods."
+    },
+
+    "food_poisoning": {
+        "food": "ORS and bland foods.",
+        "care": "Stay hydrated."
+    },
+
+    "stomach_infection": {
+        "food": "Rice, banana, toast.",
+        "care": "Drink fluids and rest."
+    },
+
+    "uti": {
+        "food": "Drink plenty of water.",
+        "care": "Medical evaluation recommended."
+    },
+
+    "kidney_infection": {
+        "food": "Adequate fluids.",
+        "care": "Doctor consultation required."
+    },
+
+    "hepatitis": {
+        "food": "Low-fat healthy diet.",
+        "care": "Avoid alcohol."
+    },
+
+    "appendicitis": {
+        "food": "Seek medical attention.",
+        "care": "Urgent evaluation required."
+    },
+
+    "arthritis": {
+        "food": "Anti-inflammatory foods.",
+        "care": "Regular exercise."
+    },
+
+    "osteoporosis": {
+        "food": "Calcium-rich foods.",
+        "care": "Weight-bearing exercise."
+    },
+
+    "anemia": {
+        "food": "Spinach, dates, iron-rich foods.",
+        "care": "Iron supplementation."
+    },
+
+    "diabetes": {
+        "food": "Low sugar diet.",
+        "care": "Monitor blood sugar."
+    },
+
+    "hypertension": {
+        "food": "Low salt foods.",
+        "care": "Exercise and stress reduction."
+    },
+
+    "heart_problem": {
+        "food": "Heart-healthy foods.",
+        "care": "Consult doctor immediately."
+    },
+
+    "allergy": {
+        "food": "Avoid trigger foods.",
+        "care": "Stay away from allergens."
+    },
+
+    "skin_infection": {
+        "food": "Healthy balanced diet.",
+        "care": "Keep skin clean."
+    },
+
+    "eczema": {
+        "food": "Hydrating foods.",
+        "care": "Moisturize skin regularly."
+    },
+
+    "psoriasis": {
+        "food": "Balanced diet.",
+        "care": "Follow treatment plan."
+    },
+
+    "stress_related": {
+        "food": "Fruits and nuts.",
+        "care": "Relaxation and sleep."
+    },
+
+    "anxiety_disorder": {
+        "food": "Nutritious foods.",
+        "care": "Stress management."
+    },
+
+    "depression": {
+        "food": "Balanced meals.",
+        "care": "Professional support may help."
+    },
+
+    "insomnia": {
+        "food": "Avoid caffeine at night.",
+        "care": "Maintain sleep routine."
+    },
+
+    "dehydration": {
+        "food": "Water, ORS, coconut water.",
+        "care": "Increase fluid intake."
+    },
+
+    "obesity": {
+        "food": "Balanced calorie-controlled diet.",
+        "care": "Regular physical activity."
+    },
+
+    "hypothyroidism": {
+        "food": "Balanced nutritious diet.",
+        "care": "Follow prescribed treatment."
+    },
+
+    "hyperthyroidism": {
+        "food": "Balanced meals.",
+        "care": "Regular medical follow-up."
+    }
+}
+
+return info.get(
+    disease,
+    {
         "food": "Eat healthy home food and stay hydrated.",
-        "care": "Consult doctor if symptoms continue." })
+        "care": "Consult doctor if symptoms continue."
+    }
+)
+
+
+
+
 # -----------------------------
 # FIXED PREDICTION FUNCTION
 # -----------------------------
@@ -158,6 +316,53 @@ def predict_disease(symptoms):
         return "hypertension", 90 
     if "fever" in symptoms and ("chills" in symptoms or "sweating" in symptoms):
         return "malaria", 90
+    # Additional disease rules
+
+if "loss of smell" in symptoms or "loss of taste" in symptoms:
+return "covid", 94
+
+if "joint pain" in symptoms and "rash" in symptoms:
+return "dengue", 92
+
+if "frequent urination" in symptoms and "thirst" in symptoms:
+return "diabetes", 93
+
+if "burning urination" in symptoms:
+return "uti", 92
+
+if "yellow skin" in symptoms or "yellow eyes" in symptoms:
+return "hepatitis", 94
+
+if "joint pain" in symptoms and "swelling" in symptoms:
+return "arthritis", 90
+
+if "night sweats" in symptoms and "cough" in symptoms:
+return "tuberculosis", 93
+
+if "red eyes" in symptoms:
+return "conjunctivitis", 90
+
+if "ear pain" in symptoms:
+return "ear_infection", 88
+
+if "itching" in symptoms and "rash" in symptoms:
+return "allergy", 89
+
+if "anxiety" in symptoms and "stress" in symptoms:
+return "anxiety_disorder", 88
+
+if "cannot sleep" in symptoms or "insomnia" in symptoms:
+return "insomnia", 88
+
+if "weight loss" in symptoms and "thirst" in symptoms:
+return "diabetes", 92
+
+if "back pain" in symptoms and "burning urination" in symptoms:
+return "kidney_infection", 91
+
+if "dry cough" in symptoms and "breathless" in symptoms:
+return "asthma", 90
+
 
 
 
