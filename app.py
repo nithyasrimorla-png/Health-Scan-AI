@@ -25,12 +25,74 @@ model = RandomForestClassifier(
 model.fit(X, y)
 
 print("AI Model trained successfully!")
+# -----------------------------
+# MULTI LANGUAGE SUPPORT
+# -----------------------------
+
+SYMPTOM_MAP = {
+
+    # FEVER
+    "fever": "fever",
+    "high fever": "fever",
+    "बुखार": "fever",
+    "ज्वर": "fever",
+    "ಜ್ವರ": "fever",
+    "காய்ச்சல்": "fever",
+    "జ్వరం": "fever",
+
+    # COUGH
+    "cough": "cough",
+
+    "खांसी": "cough",
+    "ಕೆಮ್ಮು": "cough",
+    "இருமல்": "cough",
+    "దగ్గు": "cough",
+
+    # HEADACHE
+    "headache": "headache",
+    "सिर दर्द": "headache",
+    "ತಲೆನೋವು": "headache",
+    "தலைவலி": "headache",
+    "తలనొప్పి": "headache",
+
+    # VOMITING
+    "vomiting": "vomiting",
+    "उल्टी": "vomiting",
+    "ವಾಂತಿ": "vomiting",
+    "வாந்தி": "vomiting",
+    "వాంతులు": "vomiting",
+
+    # DIZZINESS
+    "dizziness": "dizziness",
+    "चक्कर": "dizziness",
+    "ತಲೆ ಸುತ್ತು": "dizziness",
+    "மயக்கம்": "dizziness",
+    "తల తిరగడం": "dizziness",
+
+    # CHEST PAIN
+    "chest pain": "chest pain",
+    "सीने में दर्द": "chest pain",
+    "ಎದೆ ನೋವು": "chest pain",
+    "மார்பு வலி": "chest pain",
+    "ఛాతీ నొప్పి": "chest pain"
+}
+    def normalize_symptoms(text):
+    
+        text = text.lower()
+    
+        for local_word, english_word in SYMPTOM_MAP.items():
+            text = text.replace(
+                local_word.lower(),
+                english_word
+            )
+    
+        return text
 
 # -----------------------------
 # EMERGENCY CHECK
 # -----------------------------
 def emergency_check(symptoms):
-    symptoms = symptoms.lower()
+    symptoms = normalize_symptoms(symptoms)
 
     if any(x in symptoms for x in ["chest pain", "cannot breathe", "unconscious"]):
         return "HIGH"
@@ -267,7 +329,7 @@ return info.get(
 # FIXED PREDICTION FUNCTION
 # -----------------------------
 def predict_disease(symptoms):
-    symptoms = symptoms.lower()
+    symptoms = normalize_symptoms(symptoms)
 
     
     if "fever" in symptoms and "cough" in symptoms and "fatigue" in symptoms:
@@ -318,52 +380,53 @@ def predict_disease(symptoms):
         return "malaria", 90
     # Additional disease rules
 
-if "loss of smell" in symptoms or "loss of taste" in symptoms:
-return "covid", 94
 
-if "joint pain" in symptoms and "rash" in symptoms:
-return "dengue", 92
+    if "loss of smell" in symptoms or "loss of taste" in symptoms:
+    return "covid", 94
 
-if "frequent urination" in symptoms and "thirst" in symptoms:
-return "diabetes", 93
-
-if "burning urination" in symptoms:
-return "uti", 92
-
-if "yellow skin" in symptoms or "yellow eyes" in symptoms:
-return "hepatitis", 94
-
-if "joint pain" in symptoms and "swelling" in symptoms:
-return "arthritis", 90
-
-if "night sweats" in symptoms and "cough" in symptoms:
-return "tuberculosis", 93
-
-if "red eyes" in symptoms:
-return "conjunctivitis", 90
-
-if "ear pain" in symptoms:
-return "ear_infection", 88
-
-if "itching" in symptoms and "rash" in symptoms:
-return "allergy", 89
-
-if "anxiety" in symptoms and "stress" in symptoms:
-return "anxiety_disorder", 88
-
-if "cannot sleep" in symptoms or "insomnia" in symptoms:
-return "insomnia", 88
-
-if "weight loss" in symptoms and "thirst" in symptoms:
-return "diabetes", 92
-
-if "back pain" in symptoms and "burning urination" in symptoms:
-return "kidney_infection", 91
-
-if "dry cough" in symptoms and "breathless" in symptoms:
-return "asthma", 90
-
-
+    if "joint pain" in symptoms and "rash" in symptoms:
+    return "dengue", 92
+    
+    if "frequent urination" in symptoms and "thirst" in symptoms:
+    return "diabetes", 93
+    
+    if "burning urination" in symptoms:
+    return "uti", 92
+    
+    if "yellow skin" in symptoms or "yellow eyes" in symptoms:
+    return "hepatitis", 94
+    
+    if "joint pain" in symptoms and "swelling" in symptoms:
+    return "arthritis", 90
+    
+    if "night sweats" in symptoms and "cough" in symptoms:
+    return "tuberculosis", 93
+    
+    if "red eyes" in symptoms:
+    return "conjunctivitis", 90
+    
+    if "ear pain" in symptoms:
+    return "ear_infection", 88
+    
+    if "itching" in symptoms and "rash" in symptoms:
+    return "allergy", 89
+    
+    if "anxiety" in symptoms and "stress" in symptoms:
+    return "anxiety_disorder", 88
+    
+    if "cannot sleep" in symptoms or "insomnia" in symptoms:
+    return "insomnia", 88
+    
+    if "weight loss" in symptoms and "thirst" in symptoms:
+    return "diabetes", 92
+    
+    if "back pain" in symptoms and "burning urination" in symptoms:
+    return "kidney_infection", 91
+    
+    if "dry cough" in symptoms and "breathless" in symptoms:
+    return "asthma", 90
+    
+     
 
 
 
