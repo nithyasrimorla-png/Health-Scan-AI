@@ -110,6 +110,15 @@
             font-size: 12px;
             color: #444;
         }
+     select {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -131,8 +140,18 @@
     <div>
         <input id="msg" placeholder="Speak or type symptoms...">
         <br>
-        <button onclick="startVoice()" class="btn-voice">🎤 Speak</button>
-        <button onclick="sendToForm()" class="btn-main">Send</button>
+            <select id="language">
+            <option value="en-US">English</option>
+            <option value="hi-IN">Hindi</option>
+            <option value="kn-IN">Kannada</option>
+            <option value="ta-IN">Tamil</option>
+            <option value="te-IN">Telugu</option>
+            <option value="ml-IN">Malayalam</option>
+            <option value="mr-IN">Marathi</option>
+            <option value="bn-IN">Bengali</option>
+            </select>
+                 <button type="button" onclick="startVoice()" class="btn-voice">🎤 Speak</button>
+        <button type="button" onclick="sendToForm()" class="btn-main">Send</button>
     </div>
 
     <!-- RESULT -->
@@ -182,18 +201,28 @@ function showInfo() {
 
 // Voice input
 function startVoice() {
-    let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = "en-US";
+
+    let recognition =
+        new (window.SpeechRecognition ||
+             window.webkitSpeechRecognition)();
+
+    recognition.lang =
+        document.getElementById("language").value;
+
     recognition.start();
 
     recognition.onresult = function(event) {
-        document.getElementById("msg").value =
-            event.results[0][0].transcript;
+
+        let text = event.results[0][0].transcript;
+
+        document.getElementById("msg").value = text;
+        document.getElementById("mainInput").value = text;
     };
 }
-
+    
 // Send to form
 function sendToForm() {
+
     let text = document.getElementById("msg").value;
 
     if (!text) {
@@ -202,6 +231,8 @@ function sendToForm() {
     }
 
     document.getElementById("mainInput").value = text;
+
+    document.querySelector("form").submit();
 }
 </script>
 
