@@ -22,7 +22,7 @@ model = RandomForestClassifier(
     class_weight="balanced"
 )
 
-model.fit(X, y)
+
 
 print("AI Model trained successfully!")
 
