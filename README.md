@@ -1,5 +1,5 @@
 
-###🩺 Health Scan AI – Symptom Checker
+🩺 Health Scan AI – Symptom Checker
 
 Health Scan AI is a Flask-based web application that predicts possible diseases from user-entered symptoms using a hybrid approach of Rule-Based Logic + Machine Learning (Random Forest). It provides instant health insights, emergency risk detection, multilingual support, and basic care guidance.
 
