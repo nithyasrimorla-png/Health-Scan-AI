@@ -148,7 +148,7 @@ Try entering:
 - Take rest
   
 - Stay hydrated
-- 
+  
 - Follow basic medication guidance
 
 ## Future Improvements
