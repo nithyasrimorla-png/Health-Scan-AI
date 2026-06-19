@@ -21,8 +21,12 @@ model = RandomForestClassifier(
     random_state=42,
     class_weight="balanced"
 )
-model.fit(X, y)
-print("AI Model trained successfully!")
+try:
+    model.fit(X, y)
+except Exception as e:
+    print("MODEL TRAIN ERROR:", e)
+#model.fit(X, y)
+#print("AI Model trained successfully!")
 
 # -----------------------------
 # MULTI LANGUAGE SUPPORT
