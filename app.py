@@ -21,9 +21,7 @@ model = RandomForestClassifier(
     random_state=42,
     class_weight="balanced"
 )
-
-
-
+model.fit(X, y)
 print("AI Model trained successfully!")
 
 # -----------------------------
