@@ -55,7 +55,7 @@ Dizziness
 
 Chest Pain
 
-Fatigue..
+Fatigue
 
 And other symptom indicators
 
