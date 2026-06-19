@@ -1,187 +1,126 @@
 
-# 🩺 Health Scan AI – Symptom Checker (Flask + Machine Learning)
+###🩺 Health Scan AI – Symptom Checker
 
-An AI-powered **health symptom checker web application** built using **Flask, Machine Learning (Random Forest), and multilingual symptom support**.
-It predicts possible diseases based on user-entered symptoms and provides basic health advice.
+Health Scan AI is a Flask-based web application that predicts possible diseases from user-entered symptoms using a hybrid approach of Rule-Based Logic + Machine Learning (Random Forest). It provides instant health insights, emergency risk detection, multilingual support, and basic care guidance.
 
----
-
-## 🚀 Features
-
-* 🤖 AI-based disease prediction using Random Forest
-* 🌍 Multilingual symptom input support (Hindi, Kannada, Tamil, Telugu, etc.)
-* 🧠 Rule-based + ML hybrid prediction system
-* ⚠️ Emergency detection (HIGH / MEDIUM / LOW)
-* 🍎 Health advice (food + care suggestions)
-* 🏥 Covers 40+ diseases
-* 🔍 Smart symptom normalization system
-* 💡 Handles real-world messy user inputs
-
----
-🛠️ Tech Stack
-
-This project is built using:
-
-Flask 🐍 – Backend web framework
-Scikit-learn 🤖 – Machine learning model (RandomForestClassifier)
-Pandas 📊 – Data handling and preprocessing
-HTML / CSS / JavaScript 🎨 – Frontend UI
-
-## 🧠 AI Model
-
-* Algorithm: **Random Forest Classifier**
-* Library: `scikit-learn`
-* Trained on: `data.csv`
-* Features used:
-
-  * fever
-  * cough
-  * headache
-  * vomiting
-  * dizziness
-  * chest pain
-  * fatigue
-  * and more symptom indicators
-
----
-
-## 🌐 Supported Languages
-
-The system supports symptom input in:
-
-* English
-* Hindi (हिंदी)
-* Kannada (ಕನ್ನಡ)
-* Tamil (தமிழ்)
-* Telugu (తెలుగు)
-
-Example:
-
-headache = ತಲೆನೋವು = सिर दर्द = தலைவலி = తలనొప్పి
+⚠️ This project is for educational purposes only and is not a substitute for professional medical advice.
 
 
-## 🏥 Diseases Covered
+### Features
 
-Some major diseases detected:
-
-* Flu
-* Viral Fever
-* COVID-19
-* Dengue
-* Malaria
-* Typhoid
-* Pneumonia
-* Asthma
-* Diabetes
-* Hypertension
-* Migraine
-* Tuberculosis
-* UTI
-* Kidney Infection
-* Arthritis
-* Osteoporosis
-* Allergy
-* Depression
-* Anxiety Disorders
+🤖 Hybrid AI System – Combines rule-based logic with ML (Random Forest Classifier)
+🌍 Multilingual Input Support – English, Hindi, Kannada, Tamil, Telugu.
+🧠 Smart Symptom Normalization – Handles real-world messy inputs and regional terms
+⚠️ Emergency Detection System – Classifies risk as HIGH / MEDIUM / LOW
+📊 Confidence Score Output – Shows prediction reliability percentage
+🍎 Care & Diet Recommendations – Basic health guidance for predicted conditions
+🏥 40+ Diseases Covered – Includes viral, chronic, and lifestyle-related conditions
 
 
+### Tech Stack
 
-## ⚠️ Safety System
+Backend: Flask (Python)
+Machine Learning: scikit-learn (RandomForestClassifier)
+Data Handling: Pandas, NumPy
+Frontend: HTML5, CSS3, JavaScript (Jinja2 templates)
+Deployment: Railway
 
-* 🚨 Chest pain → HIGH emergency warning
-* ⚠️ Dizziness / vomiting → MEDIUM warning
-* ❗ Invalid or unsafe combinations are filtered
-* ❌ Prevents incorrect mapping (e.g., headache → osteoporosis)
 
+### AI Model Details
 
-## 🏗️ Project Structure
+Algorithm: Random Forest Classifier
+Training Data: data.csv
 
-```
-health_scan_ai/
+### Key Features:
+
+Fever
+Cough
+Headache
+Vomiting
+Dizziness
+Chest Pain
+Fatigue..
+And other symptom indicators
+
+### Supported Languages
+Users can enter symptoms in multiple languages:
+
+English
+Hindi (हिंदी)
+Kannada (ಕನ್ನಡ)
+Tamil (தமிழ்)
+Telugu (తెలుగు)
+
+# Example Mapping:
+Headache = सिर दर्द = ತಲೆನೋವು = தலைவலி = తలనొప్పి
+
+### System Workflow
+
+1. User enters symptoms in natural language
+2. Input is normalized into structured medical keywords
+3. Emergency risk level is evaluated first
+4. Rule-based system checks for known patterns
+5. If no match → ML model predicts disease
+6. Output includes disease, confidence score, risk level, and care advice
+
+## Project Structure
+
+Health-Scan-AI/
 │
-├── app.py                 # Main Flask backend
-├── data.csv              # Training dataset
+├── app.py / main.py        # Flask backend
+├── data.csv               # Dataset
 ├── templates/
-│     └── index.html      # Frontend UI
-├── static/               # CSS/JS (optional)
-└── README.md
+│   └── index.html         # Frontend UI
+├── static/                # CSS / JS files
+├── requirements.txt
+├── procfile
+└── runtime.txt
 
+## Installation & Setup
 
-## ⚙️ Installation & Setup
+1. Clone the repository
+     git clone https://github.com/nithyasrimorla-png/Health-Scan-AI.git
+     cd Health-Scan-AI
+2. Install dependencies:
+     pip install -r requirements.txt
+3. Run the application:
+     python main.py
+4. Open in browser:
+     http://127.0.0.1:5000/
 
-### 1. Clone project
+## Sample Inputs
 
-bash:
-git clone https://github.com/yourusername/health-scan-ai.git
-cd health-scan-ai
+Try entering:
+1.fever, cough, fatigue
+2.chest pain
+3.vomiting, stomach pain
+4.headache, dizziness
+5.high fever with chills
+6.burning urination
 
+## Output Example
 
-### 2. Install dependencies
-
-```bash
-pip install flask pandas scikit-learn
-```
-
-### 3. Run the app
-
-```bash
-python app.py
-```
-
-### 4. Open browser
-
-```
-http://127.0.0.1:5000/
-```
-
-
-## 🧪 Sample Inputs
-
-Try these in your app:
-
-```
-fever, cough, fatigue
-chest pain
-vomiting, stomach pain
-headache, light sensitivity
-high fever, chills
-burning urination
-weak, dizziness
-```
-
----
-
-## 📊 Output Example
-
-```
 🧠 Disease: Viral Fever
 📊 Confidence: 92%
+⚠️ Risk Level: MEDIUM
 
 💡 Advice:
-- Rest well
-- Drink fluids
-- Take proper medication
-```
+- Take rest
+- Stay hydrated
+- Follow basic medication guidance
 
----
+## Future Improvements
 
-## 🔮 Future Improvements
+💬 Chatbot-style medical assistant
+🗣️ AI voice responses
+🌐 Fully multilingual AI doctor expansion
+🧾 Medical report generation
 
-* 🎤 Voice-based symptom input
-* 🗣️ Voice AI responses
-* 💬 Chatbot UI (WhatsApp style)
-* 🌐 Fully multilingual AI doctor
-* 📱 Mobile app version
-* 🧾 Medical report generation
 
----
+⚠️ Disclaimer
 
-## ⚠️ Disclaimer
+This application is built for educational purposes only. It does not provide medical diagnosis or treatment. Always consult a qualified healthcare professional for medical concerns.
 
-This application is for **educational purposes only**.
-It is **NOT a replacement for professional medical diagnosis or treatment**.
 
-Always consult a qualified doctor for medical concerns.
-
----
-
+👩‍💻 Author
+Nithya Sri Morla
