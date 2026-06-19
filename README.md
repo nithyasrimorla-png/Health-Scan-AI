@@ -4,6 +4,8 @@ Health Scan AI is a Flask-based web application that predicts possible diseases 
 
 ⚠️ This project is for educational purposes only and is not a substitute for professional medical advice.
 
+Live Demo: https://health-scan-ai-production.up.railway.app/
+
 
 ### Features
 
